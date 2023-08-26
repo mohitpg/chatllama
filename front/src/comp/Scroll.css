@@ -1,0 +1,29 @@
+.container{
+overflow: scroll; 
+position: relative; 
+height: 100%; 
+}
+
+.transition{
+position: relative; 
+transition-property: all;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-duration: 300ms; 
+transition-duration: 300ms; 
+}
+
+.button{
+position: absolute; 
+bottom: 0.25rem; 
+left: 50%; 
+border-radius: 0.5rem; 
+width: 7rem; 
+font-size: 0.875rem;
+line-height: 1.25rem; 
+color: #ffffff; 
+background-color: #EF4444; 
+transition-property: all;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-duration: 300ms; 
+transition-duration: 300ms; 
+}
