@@ -13,12 +13,11 @@ export const ScrollContainer = ({ children, scrollCta }) => {
   useEffect(() => {
     const outerDivHeight = outerDiv.current.clientHeight;
     const innerDivHeight = innerDiv.current.clientHeight;
-    const outerDivScrollTop = outerDiv.current.scrollTop;
-    console.log(prevInnerDivHeight," ",outerDivHeight," ",innerDivHeight," ",outerDivScrollTop)
+    const outerDivScrollTop = Math.ceil(outerDiv.current.scrollTop);
 
     if (
-      !prevInnerDivHeight.current ||
-      outerDivScrollTop == prevInnerDivHeight.current - outerDivHeight
+      !prevInnerDivHeight.current || outerDivScrollTop===0 ||
+      outerDivScrollTop === prevInnerDivHeight.current - outerDivHeight
     ) {
       outerDiv.current.scrollTo({
         top: innerDivHeight - outerDivHeight,

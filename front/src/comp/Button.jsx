@@ -1,11 +1,15 @@
-export const Button = ({ children, onClick }) => {
-    return (
+import "./Button.css"
+export const Button = (props) => {
+  const submitHandler=(e)=>{
+    e.preventDefault();
+    props.ontouch([1,2]);
+  }
+  return (
       <button
         type="button"
-        onClick={onClick}
-        style={{"borderRadius":"0.5rem","width":"12rem","height":"3rem","fontWeight":700,"textTransform":"uppercase","backgroundColor":"#ffffff","transitionProperty":"all","transitionTimingFunction":"cubic-bezier(0.4, 0, 0.2, 1)","transitionDuration":["300ms","300ms"],":hover":{"backgroundColor":"#9CA3AF"}}}
-      >
-        {children}
+        onClick={submitHandler}
+        className="submitButton">
+        {props.children}
       </button>
     );
   };

@@ -5,19 +5,31 @@ import { ChatBox } from "./comp/ChatBox";
 import { ScrollContainer } from "./comp/ScrollContainer";
 
 export default function App() {
-  const [numItems, setNumItems] = useState(5);
-
+  const [numItems, setNumItems] = useState([["testin","attention please"],[2,3]]);
+  const additem=(data) => {
+    console.log(data);
+    setNumItems(prev =>
+      [...prev,data]
+    );
+    console.log(numItems);
+  };
   return (
-    <div style={{"padding":"1.25rem","width":"100%","height":"100vh","backgroundColor":"#111827"}}>
+    <div className="main">
       <div className="box">
         <ScrollContainer scrollCta="New message!">
-          {Array.from(Array(numItems).keys()).map((n) => (
+          {/* {Array.from(Array(numItem).keys()).map((n) => (
             <ChatBox message={`Message ${n + 1}`} key={`message-${n}`} />
-          ))}
+          ))} */}
+          {console.log(numItems)}
+          {
+            numItems.map(([user,machine]) =>(
+              <ChatBox message={user} message2={machine} key={user} />
+            ))
+          }
         </ScrollContainer>
       </div>
-      <div style={{"marginTop":"0.5rem"}}>
-        <Button onClick={() => setNumItems(numItems + 1)}>Add Item</Button>
+      <div style={{"textAlign":"center"}}>
+        <Button ontouch={additem}>Add Item</Button>
       </div>
     </div>
   );
