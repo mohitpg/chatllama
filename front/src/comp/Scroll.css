@@ -34,7 +34,7 @@ transition-duration: 300ms;
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: black; 
+    background: #121212; 
   }
    
   /* Handle */

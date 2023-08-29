@@ -1,0 +1,18 @@
+.chatmain{
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
+.chatuser{
+    padding: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    background: black;
+    color: antiquewhite;
+}
+.chatmachine{
+    padding: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background: black;
+    color: rgb(244, 211, 211);
+}
