@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './App.css'
 import FormPrompt from "./comp/FormPrompt";
+import Audiobar from "./comp/Audiobar"
 import { ChatBox } from "./comp/ChatBox";
 import { ScrollContainer } from "./comp/ScrollContainer";
 
@@ -30,6 +31,7 @@ export default function App() {
         </ScrollContainer>
       </div>
       <FormPrompt ontouch={additem} />
+      <Audiobar ontouch={additem} />
     </div>
   );
 }
