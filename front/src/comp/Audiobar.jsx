@@ -84,7 +84,7 @@ const Audiobar = (props) => {
             </Button>
             ) : null}
             {load===true ? (
-                <img src="/loader.gif" alt="Loading" style={{"height": "1rem","width": "1rem","margin-left":"0.5rem"}} />
+                <img src="https://raw.githubusercontent.com/mohitpg/chatllama/17cfa53ca740a2573e51f34699bbbff5037c03d7/front/public/loader.gif?token=GHSAT0AAAAAACFNUYK5G3BFZWGDGN4HTHWCZHO6S6Q" alt="Loading" style={{"height": "1rem","width": "1rem","margin-left":"0.5rem"}} />
             ) : null}
         </div>
     );

@@ -3,7 +3,7 @@ import whisper
 from flask import Flask,request,jsonify,render_template
 from flask_cors import CORS
 
-app=Flask(__name__,static_folder="build/static",template_folder="build")
+app=Flask(__name__,static_folder="front/build/static",template_folder="front/build")
 CORS(app)
 LLM = Llama(model_path="../codes/llama-2-7b-chat.ggmlv3.q2_K.bin")
 model = whisper.load_model("small")
