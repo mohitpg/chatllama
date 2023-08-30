@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300&family=Oswald&family=Roboto+Condensed&display=swap');
+
+.record{
+    font-family: "Roboto Condensed";
+    color: white;
+    background: url("../../public/wave.jpg");
+    background-size: contain;
+    box-shadow: none !important;
+}

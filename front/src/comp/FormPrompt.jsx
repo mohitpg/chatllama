@@ -15,7 +15,7 @@ const FormPrompt = (props) =>{
         if (form.checkValidity()===true){ 
             const prompt=[event.target.elements.forminput.value,0];
             props.ontouch([prompt[0],"Thinking..."]);
-            const response=await axios.post('http://localhost:5000/',JSON.stringify(prompt),{
+            const response=await axios.post('/text',JSON.stringify(prompt),{
               headers: {
                 'Content-Type':'application/json',
               }
@@ -27,8 +27,8 @@ const FormPrompt = (props) =>{
         ref.current.value="";
       }
       return (
-        <Form noValidate onSubmit={submitHandler}>
-          <Form.Group as={Col} md="4" style={{"margin": "0.5rem auto 1% auto"}} controlId="validationCustomUsername">
+        <Form noValidate onSubmit={submitHandler} style={{"display":"inline","margin-left":"24%"}}>
+          <Form.Group as={Col} md="4" style={{"margin": "0.5rem auto 0% auto","display":"inline-block"}} controlId="validationCustomUsername">
           <InputGroup hasValidation>
             <Form.Control
               ref={ref}

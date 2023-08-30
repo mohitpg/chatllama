@@ -1,5 +1,8 @@
 import { useState, useRef } from "react";
 import axios from "axios"
+import Button from "react-bootstrap/Button"
+import "./Audiobar.css"
+
 const Audiobar = (props) => {
     const mimeType = "audio/mp3";
     const [permission, setPermission] = useState(false);
@@ -8,19 +11,21 @@ const Audiobar = (props) => {
     const [stream, setStream] = useState(null);
     const [audioChunks, setAudioChunks] = useState([]);
     const [audio, setAudio] = useState(null);
+    const [load, setLoad] = useState(false);
 
     const sendAudioFile = async (file) => {
         const formData = new FormData();
         formData.append('audio-file', file);
-        const response=await axios.post('http://localhost:5000/sound',formData);
+        const response=await axios.post('/sound',formData);
         console.log(response.data);
         const prompt=[response.data.text,0];
         props.ontouch([prompt[0],"Thinking..."]);
-        const res=await axios.post('http://localhost:5000/',JSON.stringify(prompt),{
+        const res=await axios.post('/text',JSON.stringify(prompt),{
           headers: {
             'Content-Type':'application/json',
           }
         });
+        setLoad(false);
         console.log(res.data);
         props.ontouch([prompt[0],res.data]);
       };
@@ -55,32 +60,32 @@ const Audiobar = (props) => {
         mediaRecorder.current.onstop = () => {
            const audioBlob = new Blob(audioChunks, { type: mimeType });
            sendAudioFile(audioBlob);
+           setLoad(true);
            const audioUrl = URL.createObjectURL(audioBlob);
            setAudio(audioUrl);
            setAudioChunks([]);
         };
     };
     return (
-        <div>
-            <main>
-                <div className="audio-controls">
-                    {!permission ? (
-                    <button onClick={getMicrophonePermission} type="button">
-                        Get Microphone
-                    </button>
-                    ) : null}
-                    {permission && recordingStatus === "inactive" ? (
-                    <button onClick={startRecording} type="button">
-                        Start Recording
-                    </button>
-                    ) : null}
-                    {recordingStatus === "recording" ? (
-                    <button onClick={stopRecording} type="button">
-                        Stop Recording
-                    </button>
-                    ) : null}
-                </div>
-            </main>
+        <div className="audio-controls" style={{"display":"inline-block"}}>
+            {!permission ? (
+            <Button onClick={getMicrophonePermission} className="record" type="button">
+                Record Audio
+            </Button>
+            ) : null}
+            {permission && recordingStatus === "inactive" ? (
+            <Button onClick={startRecording} type="button" className="record" disabled={load}>
+                Start Recording
+            </Button>
+            ) : null}
+            {recordingStatus === "recording" ? (
+            <Button onClick={stopRecording} className="record" type="button">
+                Stop Recording
+            </Button>
+            ) : null}
+            {load===true ? (
+                <img src="/loader.gif" alt="Loading" style={{"height": "1rem","width": "1rem","margin-left":"0.5rem"}} />
+            ) : null}
         </div>
     );
 };

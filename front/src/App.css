@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300&family=Oswald&family=Roboto+Condensed&display=swap');
+
+#heading{
+  font-family: 'Alegreya Sans';
+  font-size: 1.5rem;
+  color: azure;
+  margin: 1% auto -1rem auto;
+  text-align: center;
+}
+
+.or{
+  font-family: 'Oswald';
+  color: antiquewhite;
+  background: #121212;
+  pointer-events: none;
+  border-color: #121212;
+}
+
 .App {
   text-align: center;
+  margin: 0%;
 }
 
 .App-logo {

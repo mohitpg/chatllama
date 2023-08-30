@@ -4,14 +4,15 @@ import FormPrompt from "./comp/FormPrompt";
 import Audiobar from "./comp/Audiobar"
 import { ChatBox } from "./comp/ChatBox";
 import { ScrollContainer } from "./comp/ScrollContainer";
+import Button from "react-bootstrap/esm/Button";
 
 export default function App() {
-  const [numItems, setNumItems] = useState([["testin","attention please"],[2,3]]);
+  const [numItems, setNumItems] = useState([]);
   const additem=(data) => {
     setNumItems(prev =>{
       let arrtemp=structuredClone(prev);
       let n=arrtemp.length
-      if(arrtemp[n-1][1]==="Thinking..."){
+      if(n>0 && arrtemp[n-1][1]==="Thinking..."){
         arrtemp[n-1][1]=data[1];
       } 
       else arrtemp=[...prev,data];
@@ -21,6 +22,7 @@ export default function App() {
   };
   return (
     <div className="main">
+      <h2 id="heading">Enter a prompt or record it to get started!</h2>
       <div className="box">
         <ScrollContainer scrollCta="New message!">
           {
@@ -31,6 +33,8 @@ export default function App() {
         </ScrollContainer>
       </div>
       <FormPrompt ontouch={additem} />
+      <Button className="or" style={{"display":"inline-block"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Button>
+      {/* <div style={{"display":"inline"}}><h2 className="or">&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;</h2></div> */}
       <Audiobar ontouch={additem} />
     </div>
   );
