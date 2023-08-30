@@ -1,0 +1,5 @@
+pip install llama_cpp
+pip3 install torch torchvision torchaudio
+pip install openai-whisper
+pip install flask
+pip install flask-cors
