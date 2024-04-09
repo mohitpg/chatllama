@@ -1,5 +1,9 @@
-pip install llama_cpp
-pip3 install torch torchvision torchaudio
-pip install openai-whisper
-pip install flask
-pip install flask-cors
+torch torchvision torchaudio
+openai-whisper
+flask
+flask-cors
+accelerate==0.21.0
+peft==0.4.0
+bitsandbytes==0.40.2
+transformers==4.31.0
+trl==0.4.7
