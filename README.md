@@ -1,13 +1,13 @@
 # Chatllama
 
-### A web UI for Facebook's LLAMA2 model with both text and voice prompt.
+### A web UI for my fine tuned LLAMA2 model with both text and voice prompt.
 
 <div align="center">
  <img src='https://github.com/mohitpg/chatllama/blob/main/front/public/ss.png?raw=true'>
 </div>
 
 # Overview
-This repository contains the fine tuned version of llama-2-7b-chat model trained on **[my dataset](https://github.com/mohitpg/chatllama)** with a web interface. Converts voice prompts to text via OpenAI's Whisper model. Model trained using **[QLoRA](https://github.com/mohitpg/chatllama)** and deployed using HuggingFace ecosystem. Frontend in react and served using Flask.
+This repository contains the fine tuned version of llama-2-7b-chat model trained on **[my dataset](https://huggingface.co/datasets/mohitpg/openassistant-guanaco-english)** with a web interface. Converts voice prompts to text via OpenAI's Whisper model. Model trained using **[QLoRA](https://arxiv.org/abs/2305.14314)** and deployed using HuggingFace ecosystem. Frontend in react and served using Flask.
 
 # Installation
 1. Run <br>
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 ```
 npm run build
 ```
-
+6. Login with huggingface-cli
 7. Finally run <br>
 ```
 python server.py
@@ -39,8 +39,5 @@ python server.py
  <br>
 This will run the server at localhost port:5000
 
-## Remarks
-<ul>
- <li>If a configered C compiler isn't present download built wheels from https://github.com/abetlen/llama-cpp-python/releases before running pip.</li>
- <li>I have used the Llama 7b-chat model and the small version of Whisper. If you have a GPU consider upgrading.</li>
-</ul>
+## References
+https://mlabonne.github.io/blog/posts/Fine_Tune_Your_Own_Llama_2_Model_in_a_Colab_Notebook.html
