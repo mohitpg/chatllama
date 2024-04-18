@@ -40,4 +40,5 @@ python server.py
 This will run the server at localhost port:5000
 
 ## References
-https://mlabonne.github.io/blog/posts/Fine_Tune_Your_Own_Llama_2_Model_in_a_Colab_Notebook.html
+https://arxiv.org/abs/2305.14314 <br>
+https://arxiv.org/abs/2402.18158
