@@ -34,7 +34,6 @@ export default function App() {
       </div>
       <FormPrompt ontouch={additem} />
       <Button className="or" style={{"display":"inline-block"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Button>
-      {/* <div style={{"display":"inline"}}><h2 className="or">&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;</h2></div> */}
       <Audiobar ontouch={additem} />
     </div>
   );
