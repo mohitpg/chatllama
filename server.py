@@ -25,7 +25,7 @@ def servetext():
     print(output)
     # l=output.split('\n')
     # output='<br />'.join(l)
-    return jsonify(output)
+    return jsonify(output[0]['generated_text'])
 
 @app.route('/sound',methods=['GET','POST'])
 def servesound():
@@ -33,6 +33,12 @@ def servesound():
     data.save("./prompt.mp3")
     res = model.transcribe("./prompt.mp3")
     return jsonify(res)
+
+@app.route('/fupload',methods=['GET','POST'])
+def uploadfile():
+    data = request.files['pdf']
+    data.save("./files/ragcheck.pdf")
+    return jsonify({"ok":1})
 
 if(__name__=="__main__"):
     app.run()

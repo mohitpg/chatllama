@@ -16,11 +16,11 @@ const Audiobar = (props) => {
     const sendAudioFile = async (file) => {
         const formData = new FormData();
         formData.append('audio-file', file);
-        const response=await axios.post('/sound',formData);
+        const response=await axios.post('http://localhost:5000/sound',formData);
         console.log(response.data);
         const prompt=[response.data.text,0];
         props.ontouch([prompt[0],"Thinking..."]);
-        const res=await axios.post('/text',JSON.stringify(prompt),{
+        const res=await axios.post('http://localhost:5000/text',JSON.stringify(prompt),{
           headers: {
             'Content-Type':'application/json',
           }

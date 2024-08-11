@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './App.css'
 import FormPrompt from "./comp/FormPrompt";
 import Audiobar from "./comp/Audiobar"
+import FileUpload from "./comp/FileUpload"
 import { ChatBox } from "./comp/ChatBox";
 import { ScrollContainer } from "./comp/ScrollContainer";
 import Button from "react-bootstrap/esm/Button";
@@ -32,6 +33,7 @@ export default function App() {
           }
         </ScrollContainer>
       </div>
+      <FileUpload />
       <FormPrompt ontouch={additem} />
       <Button className="or" style={{"display":"inline-block"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Button>
       <Audiobar ontouch={additem} />
