@@ -6,6 +6,8 @@ import FileUpload from "./comp/FileUpload"
 import { ChatBox } from "./comp/ChatBox";
 import { ScrollContainer } from "./comp/ScrollContainer";
 import Button from "react-bootstrap/esm/Button";
+import { ReactNotifications } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 export default function App() {
   const [numItems, setNumItems] = useState([]);
@@ -23,6 +25,7 @@ export default function App() {
   };
   return (
     <div className="main">
+      <ReactNotifications />
       <h2 id="heading">Enter a prompt or record it to get started!</h2>
       <div className="box">
         <ScrollContainer scrollCta="New message!">
