@@ -3,8 +3,11 @@
 ### A web UI for my fine tuned LLAMA2 model with both text and voice prompt.
 
 <div align="center">
- <img src='https://github.com/mohitpg/chatllama/blob/main/front/public/ss.png?raw=true'>
+ <img src='https://github.com/mohitpg/chatllama/blob/80ac951c1219cba5c38ed2e0d941adf1c1d477a9/front/public/ss.jpg'>
 </div>
+
+# Update!
+ChatLLAMA now supports Retrieval Augmented Generation (RAG) via Langchain. Click on Upload file to use a document.
 
 # Overview
 This repository contains the fine tuned version of llama-2-7b-chat model trained on **[my dataset](https://huggingface.co/datasets/mohitpg/openassistant-guanaco-english)** with a web interface. Converts voice prompts to text via OpenAI's Whisper model. Model trained using **[QLoRA](https://arxiv.org/abs/2305.14314)** and deployed using HuggingFace ecosystem. Frontend in react and served using Flask.
