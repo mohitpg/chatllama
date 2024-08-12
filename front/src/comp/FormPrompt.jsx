@@ -15,7 +15,7 @@ const FormPrompt = (props) =>{
         if (form.checkValidity()===true){ 
             const prompt=[event.target.elements.forminput.value,0];
             props.ontouch([prompt[0],"Thinking..."]);
-            const response=await axios.post('http://localhost:5000/text',JSON.stringify(prompt),{
+            const response=await axios.post('/text',JSON.stringify(prompt),{
               headers: {
                 'Content-Type':'application/json',
               }

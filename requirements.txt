@@ -7,3 +7,8 @@ peft==0.4.0
 bitsandbytes==0.40.2
 transformers==4.31.0
 trl==0.4.7
+langchain==0.2.12
+langchain-community==0.2.11
+pypdf==4.3.1
+sentence-transformers==3.0.1
+faiss-cpu==1.8.0

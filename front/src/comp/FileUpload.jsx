@@ -34,7 +34,7 @@ export default function InputFileUpload() {
               onScreen: true
             }
           });
-          const response=await axios.post('http://localhost:5000/fupload',formData);
+          const response=await axios.post('/fupload',formData);
           Store.addNotification({
             message: "File Uploaded Successfully!",
             type: "success",
