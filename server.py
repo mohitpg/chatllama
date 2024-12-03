@@ -1,4 +1,6 @@
 import whisper
+import torch
+import base64
 from flask import Flask,request,jsonify,render_template
 from flask_cors import CORS
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline, BitsAndBytesConfig
@@ -9,6 +11,7 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
+from diffusers import StableDiffusionPipeline,DiffusionPipeline, AutoencoderKL
 
 app=Flask(__name__,static_folder="front/build/static",template_folder="front/build")
 CORS(app)
@@ -25,9 +28,26 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_compute_dtype="float16",
     bnb_4bit_use_double_quant=False,
 )
+#For Testing
+# tokenizer = AutoTokenizer.from_pretrained("arnir0/Tiny-LLM")
+# model_txt = AutoModelForCausalLM.from_pretrained("arnir0/Tiny-LLM")
+# imagepipe = StableDiffusionPipeline.from_pretrained("nota-ai/bk-sdm-tiny",
+#                                                     safety_checker = None,
+#                                                     requires_safety_checker = False,
+#                                                     torch_dtype=torch.float32)
 tokenizer = AutoTokenizer.from_pretrained("mohitpg/llama2-mohitpg")
 model_txt = AutoModelForCausalLM.from_pretrained("mohitpg/llama2-mohitpg",quantization_config=bnb_config, device_map = {"": 0})
-pipe = pipeline(task="text-generation", model=model_txt,tokenizer=tokenizer, max_new_tokens=300,stop_sequence="<|end|>")
+vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16)
+imagepipe = DiffusionPipeline.from_pretrained(
+    "stabilityai/stable-diffusion-xl-base-1.0",
+    vae=vae,
+    torch_dtype=torch.float16,
+    variant="fp16",
+    use_safetensors=True
+)
+imagepipe.load_lora_weights("mohitpg/fuljhadi")
+#imagepipe = imagepipe.to("cuda")
+pipe = pipeline(task="text-generation", model=model_txt,tokenizer=tokenizer, max_new_tokens=300)
 hf = HuggingFacePipeline(pipeline=pipe)
 retriever=0
 
@@ -38,11 +58,21 @@ def serve():
 @app.route('/text',methods=['GET','POST'])
 def servetext():
     data = request.get_json()
+    print(data)
     result={}
+    if len(data[0])>5 and data[0][:5]=="<GEN>":
+        imresult=imagepipe(data[0][5:], num_inference_steps = 30).images[0]
+        imresult.save("wow.jpg")
+        with open("wow.jpg","rb") as img:
+            my_string = base64.b64encode(img.read()).decode('utf-8')
+        return jsonify(my_string)
     if retriever==0:
         result1 = pipe(f"<s>[INST] {data[0]} [/INST]")
         output=result1[0]['generated_text'].split('[/INST]  ')[1]
         result={'result':output}
+        # result1 = pipe(data[0])
+        # output=result1[0]['generated_text']
+        # result={'result':output}
     else:
         retrievalQA = RetrievalQA.from_chain_type(
             llm=hf,
