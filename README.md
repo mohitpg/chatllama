@@ -7,7 +7,7 @@
 </div>
 
 # Update 2
-Added the Stable Diffusion XL model fine tuned using Dreambooth. Type <GEN> before prompt to generate image!
+Added the Stable Diffusion XL model fine-tuned using Dreambooth. Type `<GEN>` before prompt to generate image!
 # Update!
 ChatLLAMA now supports Retrieval Augmented Generation (RAG) via Langchain. Click on Upload file to use a document.
 
