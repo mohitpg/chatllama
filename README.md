@@ -1,11 +1,13 @@
 # Chatllama
 
-### A web UI for my fine tuned LLAMA2 model with both text and voice prompt.
+### A web UI for my fine tuned LLAMA2 and Stable Diffusion model with RAG and voice prompt capabilities.
 
 <div align="center">
- <img src='https://github.com/mohitpg/chatllama/blob/80ac951c1219cba5c38ed2e0d941adf1c1d477a9/front/public/ss.jpg'>
+ <img src='https://github.com/mohitpg/chatllama/blob/main/front/public/ss.png?raw=true'>
 </div>
 
+# Update 2
+Added the Stable Diffusion XL model fine tuned using Dreambooth. Type <GEN> before prompt to generate image!
 # Update!
 ChatLLAMA now supports Retrieval Augmented Generation (RAG) via Langchain. Click on Upload file to use a document.
 
@@ -44,4 +46,5 @@ This will run the server at localhost port:5000
 
 ## References
 https://arxiv.org/abs/2305.14314 <br>
-https://arxiv.org/abs/2402.18158
+https://arxiv.org/abs/2402.18158 <br>
+https://arxiv.org/abs/2208.12242
